@@ -140,6 +140,7 @@ const Carousel = React.createClass({
                 className={'slider-decorator-' + index}
                 key={index}>
                 <Decorator.component
+                  autoPlayInterval={self.state.autoPlayInterval}
                   currentSlide={self.state.currentSlide}
                   slideCount={self.state.slideCount}
                   frameWidth={self.state.frameWidth}
@@ -316,6 +317,8 @@ const Carousel = React.createClass({
     this.setState({
       dragging: false
     });
+
+    clearInterval(this.state.autoPlayInterval)
   },
 
   swipeDirection(x1, x2, y1, y2) {
