@@ -86,6 +86,7 @@ const Carousel = React.createClass({
 
   getInitialState() {
     return {
+      autoPlayInterval: null,
       currentSlide: 0,
       dragging: false,
       frameWidth: 0,
@@ -432,7 +433,12 @@ const Carousel = React.createClass({
   // Bootstrapping
 
   beginAutoPlay() {
-    console.log(this.props.autoPlay)
+
+    this.setState({
+      autoPlayInterval: setInterval(function() {
+        console.log('sup')
+      }, (this.props.autoPlay * 1000))
+    })
   },
 
   bindEvents() {
