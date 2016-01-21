@@ -39,6 +39,7 @@ const Carousel = React.createClass({
   mixins: [tweenState.Mixin],
 
   propTypes: {
+    autoPlay: React.PropTypes.number,
     cellAlign: React.PropTypes.oneOf(['left', 'center', 'right']),
     cellSpacing: React.PropTypes.number,
     data: React.PropTypes.func,
@@ -65,6 +66,7 @@ const Carousel = React.createClass({
 
   getDefaultProps() {
     return {
+      autoPlay: 0,
       cellAlign: 'left',
       cellSpacing: 0,
       data: function() {},
@@ -103,6 +105,7 @@ const Carousel = React.createClass({
     this.setDimensions();
     this.bindEvents();
     this.setExternalData();
+    this.beginAutoPlay();
   },
 
   componentWillReceiveProps(nextProps) {
@@ -427,6 +430,10 @@ const Carousel = React.createClass({
   },
 
   // Bootstrapping
+
+  beginAutoPlay() {
+    console.log(this.props.autoPlay)
+  },
 
   bindEvents() {
     var self = this;
