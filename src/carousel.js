@@ -114,6 +114,7 @@ const Carousel = React.createClass({
   },
 
   componentWillUnmount() {
+    this.endAutoPlay();
     this.unbindEvents();
   },
 
@@ -444,6 +445,12 @@ const Carousel = React.createClass({
           self.goToSlide(0)
       }, (this.props.autoPlay * 1000))
     })
+  },
+
+  endAutoPlay() {
+    if (this.state.autoPlayInterval !== null) {
+      clearInterval(this.state.autoPlayInterval)
+    }
   },
 
   bindEvents() {
