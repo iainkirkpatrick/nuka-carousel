@@ -433,12 +433,12 @@ const Carousel = React.createClass({
   // Bootstrapping
 
   beginAutoPlay() {
-
+    var self = this;
     this.setState({
       autoPlayInterval: setInterval(function() {
-        this.state.currentSlide < (this.state.slideCount - 1) ?
-          this.nextSlide() :
-          this.goToSlide(0)
+        self.state.currentSlide < (self.state.slideCount - 1) ?
+          self.nextSlide() :
+          self.goToSlide(0)
       }, (this.props.autoPlay * 1000))
     })
   },
